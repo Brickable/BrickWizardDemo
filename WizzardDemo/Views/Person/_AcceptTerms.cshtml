@@ -1,0 +1,37 @@
+﻿
+@model WizardDemo.Models.PersonViewModel
+<div id="form-container">
+    @*@Html.Partial("NavBar", Model.NavBar);*@
+    <div>
+        @Model.NavBar.FirstOrDefault(x => x.Current).Number
+        <br />
+        @Model.NavBar.FirstOrDefault(x => x.Current).Name
+        <br />
+        <strong>
+            @ViewBag.PATHLOG
+        </strong>
+    </div>
+
+    @using (Ajax.BeginForm(
+        Model.ActionName,
+        "Person",
+        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" },
+        new { id = "person-form" }))
+    {
+        <fieldset>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersonAcceptTerms.AcceptTerms)
+                @Html.CheckBoxFor(model => model.PersonAcceptTerms.AcceptTerms, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PersonAcceptTerms.AcceptTerms)
+            </div>
+            <a class="back-command">PREVIOUS</a>
+            <input type="submit" value="NEXT" />
+        </fieldset>
+    }
+    <script>
+        $('.back-command').on("click", function (e) {
+            e.preventDefault();
+            $('#person-form').attr('action', '@Url.Action(Model.PreviousStep.ActionName, "Person")').submit();
+        });
+    </script>
+</div>

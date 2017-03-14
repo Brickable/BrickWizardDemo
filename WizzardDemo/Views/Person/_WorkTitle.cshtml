@@ -1,0 +1,42 @@
+﻿@model WizardDemo.Models.PersonViewModel
+<div id="form-container">
+    @*@Html.Partial("NavBar", Model.NavBar);*@
+    <div>
+        @Model.NavBar.FirstOrDefault(x => x.Current).Number
+        <br />
+        @Model.NavBar.FirstOrDefault(x => x.Current).Name
+        <br />
+        <strong>
+            @ViewBag.PATHLOG
+        </strong>
+    </div>
+
+    @using (Ajax.BeginForm(
+            Model.ActionName,
+            "Person",
+            new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" },
+            new { id = "person-form" }))
+    {
+        <fieldset>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersonWorkInfo.WorkTitle)
+                @Html.TextBoxFor(model => model.PersonWorkInfo.WorkTitle, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PersonWorkInfo.WorkTitle)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersonWorkInfo.Company)
+                @Html.TextBoxFor(model => model.PersonWorkInfo.Company, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PersonWorkInfo.Company)
+            </div>
+            <a class="back-command">PREVIOUS</a>
+            <input type="submit" value="NEXT" />
+        </fieldset>
+    }
+    <script>
+        $('.back-command').on("click", function (e) {
+            e.preventDefault();
+            $('#person-form').attr('action', '@Url.Action(Model.PreviousStep.ActionName, "Person")').submit();
+        });
+    </script>
+</div>
+
