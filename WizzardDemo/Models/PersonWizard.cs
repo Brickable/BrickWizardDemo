@@ -7,9 +7,9 @@ using System.Web;
 
 namespace WizardDemo.Models
 {
-    public class PersonWorkflow : Workflow<PersonViewModel>, IWorkflow<PersonViewModel>
+    public class PersonWizard : Wizard<PersonViewModel>
     {
-        public override List<Route> DefaultRoutes
+        protected override List<Route> DefaultRoutes
         {
             get
             {
@@ -54,8 +54,8 @@ namespace WizardDemo.Models
                 };
             }
         }
-        public override List<string> TriggerPoints => new List<string> { "PostAge", "PostStudentAssert" };
-        public override void Orchestrate()
+        protected override List<string> TriggerPoints => new List<string> { "PostAge", "PostStudentAssert" };
+        protected override void Orchestrate()
         {
             if (!IsTriggerPointStep)
             {

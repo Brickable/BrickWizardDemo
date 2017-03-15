@@ -31,7 +31,7 @@ namespace WizardDemo.App_Start
 
         private static void InitializeContainer(Container container)
         {
-            container.Register<IWorkflow<PersonViewModel>, PersonWorkflow>(Lifestyle.Scoped);
+            //container.Register<IWorkflow<PersonViewModel>, PersonWizard>(Lifestyle.Scoped);
         }
     }
 }
