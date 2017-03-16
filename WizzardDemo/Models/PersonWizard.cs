@@ -9,49 +9,49 @@ namespace WizardDemo.Models
 {
     public class PersonWizard : Wizard<PersonViewModel>
     {
-        protected override List<Route> DefaultRoutes
+        protected override int MaxNavSteps => 1;
+        protected override Map Map
         {
             get
             {
                 return
-                new List<Route>
-                {
+                new Map(new List<Route> {
                     new Route
                     {
                         RouteId = 1,
-                        Steps = new List<Step>
+                        Steps = new Steps(new List<Step>
                         {
                             new Step("PostName","_Name","Name",1),
                             new Step("PostAge","_Age","Age",2),
                             new Step("PostWorkTitle","_WorkTitle", "Work data",3),
                             new Step("PostFamily","_Family", "Family",4),
                             new Step("PostAcceptTerms","_AcceptTerms", "Accept terms",5)
-                        }
+                        })
                     },
                     new Route
                     {
                         RouteId = 2,
-                        Steps = new List<Step>
+                        Steps = new Steps( new List<Step>
                         {
                             new Step("PostName","_Name","Name",1),
                             new Step("PostAge","_Age","Age",2),
                             new Step("PostStudentAssert","_StudentAssert", "Student Assert",3),
                             new Step("PostStudentData","_StudentData", "Student data",4),
                             new Step("PostAcceptTerms","_AcceptTerms", "Accept terms",5)
-                        }
+                        })
                     },
                     new Route
                     {
                         RouteId = 3,
-                        Steps = new List<Step>
+                        Steps = new Steps(new List<Step>
                         {
                             new Step("PostName","_Name","Name",1),
                             new Step("PostAge","_Age","Age",2),
                             new Step("PostStudentAssert","_StudentAssert", "Student Assert",3),
                             new Step("PostAcceptTerms","_AcceptTerms", "Accept terms",4)
-                        }
+                        })
                     }
-                };
+                });
             }
         }
         protected override List<string> TriggerPoints => new List<string> { "PostAge", "PostStudentAssert" };
@@ -76,7 +76,6 @@ namespace WizardDemo.Models
                 }
             }
         }
-
         private void ManagePostStudentTriggerPoint()
         {
             if (IsStudent)
@@ -92,9 +91,7 @@ namespace WizardDemo.Models
                 FollowTheRoute(2);
         }
         private bool IsMajorAge => (Model.PersonBirthday.BirthDay.AddYears(18) < DateTime.Today);
-        private bool IsStudent => (Model.PersonIsStudent.IsStudent);
-
-
+        private bool IsStudent => (Model.PersonIsStudent.IsStudent);   
     }
 
 }
