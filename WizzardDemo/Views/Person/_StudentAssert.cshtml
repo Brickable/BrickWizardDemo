@@ -1,36 +1,48 @@
 ﻿@model WizardDemo.Models.PersonViewModel
-<div id="form-container">
-    @*@Html.Partial("NavBar", Model.NavBar);*@
-    <div>
-        @Model.NavBar.FirstOrDefault(x => x.Current).Number
-        <br />
-        @Model.NavBar.FirstOrDefault(x => x.Current).Name
-        <br />
-        <strong>
-            @ViewBag.PATHLOG
-        </strong>
-    </div>
 
-    @using (Ajax.BeginForm(
-            Model.ActionName,
-            "Person",
-            new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" },
-            new { id = "person-form" }))
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "form-container"
+    };
+
+    var LabelProperties = new { @class = "horizontal-form-label" };
+    var InputProperties = new { @class = "form-control form-control-inline" };
+    var checkBoxProperties = new { @class = "checkbox" };
+    var ErrorMessageProperties = new { @class = "validation-error-inline" };
+}
+
+<div id="form-container">
+    @Html.Partial("NavBarDefault", Model.NavBar)
+
+    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class = "brick-wizard-form" }))
     {
         <fieldset>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PersonIsStudent.IsStudent)
-                @Html.CheckBoxFor(model => model.PersonIsStudent.IsStudent, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonIsStudent.IsStudent)
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonIsStudent.IsStudent, LabelProperties)
+                        @Html.CheckBoxFor(model => model.PersonIsStudent.IsStudent, checkBoxProperties)
+                        @Html.ValidationMessageFor(model => model.PersonIsStudent.IsStudent, "", ErrorMessageProperties)
+                    </div>
+                </div>
             </div>
-            <a class="back-command">PREVIOUS</a>
-            <input type="submit" value="NEXT" />
+
+            <div class="btn-group" role="group" aria-label="...">
+                <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
+                    <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
+                </a>
+
+                <button type="submit" class="btn btn-primary">
+                    NEXT <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
         </fieldset>
     }
-    <script>
-        $('.back-command').on("click", function (e) {
-            e.preventDefault();
-            $('#person-form').attr('action', '@Url.Action(Model.PreviousStep.ActionName, "Person")').submit();
-        });
-    </script>
 </div>
+
+<script>
+    brickWizardHandlerInit();
+</script>

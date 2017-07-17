@@ -1,0 +1,13 @@
+﻿@model WizardDemo.Models.PersonResult
+
+<h1>View model:</h1>
+
+@Html.Raw(Json.Encode(Model.ViewModel.PersonName));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonBirthday));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonAddress));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonFamily));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonIsStudent));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonStudentInfo));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonWorkInfo));
+@Html.Raw(Json.Encode(Model.ViewModel.PersonAcceptTerms));
+

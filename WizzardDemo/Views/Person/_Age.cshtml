@@ -1,44 +1,65 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-<div id="form-container">
-    @*@Html.Partial("NavBar", Model.NavBar);*@
-    <div>
-        @Model.NavBar.FirstOrDefault(x => x.Current).Number
-        <br />
-        @Model.NavBar.FirstOrDefault(x => x.Current).Name
-        <br />
-        <strong>
-            @ViewBag.PATHLOG
-        </strong>
-    </div>
-    @using (Ajax.BeginForm(
-        Model.ActionName,
-        "Person",
-        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" },
-        new { id = "person-form" }))
-
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
     {
-        <fieldset>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PersonBirthday.BirthDay)
-                @Html.TextBoxFor(model => model.PersonBirthday.BirthDay, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonBirthday.BirthDay)
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PersonBirthday.Genre)
-                @Html.CheckBoxFor(model => model.PersonBirthday.Genre, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonBirthday.Genre)
-            </div>
-            <a class="back-command">PREVIOUS</a>
-            <input id="Next" type="submit" value="NEXT" />
+       
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "form-container"
+    };
 
-        </fieldset>
-    }
-    <script>
-        $('.back-command').on("click", function (e) {
-            e.preventDefault();
-            $('#person-form').attr('action', '@Url.Action(Model.PreviousStep.ActionName, "Person")').submit();
-        });
-    </script>
+    var LabelProperties = new { @class = "horizontal-form-label" };
+    var InputProperties = new { @class = "form-control form-control-inline" };
+    var CheckBoxProperties = new { @class = "checkbox" };
+    var ErrorMessageProperties = new { @class = "validation-error-inline" };
+}
+<div id="main">
+    <div class="main-container" data-namespace="person-form">
+        <div id="form-container">
+            @Html.Partial("NavBarDefault", Model.NavBar, new ViewDataDictionary { { "ControllerName", Model.ControllerName } })
 
+            @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class = "brick-wizard-form" }))
+            {
+                <fieldset>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PersonBirthday.BirthDay, LabelProperties)                             
+                                @Html.EditorFor(model => model.PersonBirthday.BirthDay, new { htmlAttributes = InputProperties })
+                                @Html.ValidationMessageFor(model => model.PersonBirthday.BirthDay, "", ErrorMessageProperties)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PersonBirthday.Genre, LabelProperties)
+                                @Html.CheckBoxFor(model => model.PersonBirthday.Genre, CheckBoxProperties)
+                                @Html.ValidationMessageFor(model => model.PersonBirthday.Genre, "", ErrorMessageProperties)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
+                            <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
+                        </a>
+
+                        <button type="submit" class="btn btn-primary">
+                            NEXT <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
 </div>
+<script src="~/Scripts/wizard.handler.js"></script>
+<script>
+    brickWizardHandlerInit();
+    var dt = new HaDateTimePicker("#PersonBirthday_BirthDay");
+    dt.options.disableTime = true;
+    document.getElementById("PersonBirthday_BirthDay").addEventListener("click", function () {
+        dt.show();
+    });
+</script>
+
+

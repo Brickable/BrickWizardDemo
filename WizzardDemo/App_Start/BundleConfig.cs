@@ -12,7 +12,7 @@ namespace WizardDemo
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                  "~/Scripts/jquery.unobtrusive*",
+                  "~/Scripts/jquery.unobtrusive-ajax.js",
                   "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -27,6 +27,16 @@ namespace WizardDemo
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/datepicker").Include(
+                      "~/Content/ha-datetimepicker.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datepickerjs").Include(
+                     "~/Scripts/ha-datetimepicker/ha-datetimepicker.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/datepicker").Include(
+                      "~/Content/ha-datetimepicker/ha-datetimepicker.min.css"));
+
         }
     }
 }

@@ -1,31 +1,52 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div id="main">
+    <div class="main-container" data-namespace="person-form">
+        <div class="jumbotron">
+            <h1>Brick Wizard Demo</h1>
+            <p class="lead"> Concept proof for brick wizard project</p>
+            
+            <p><a href="https://github.com/Brickable/BrickWizard/wiki" target="_blank" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Library Role</h2>
+                <p>
+                    Brick Wizard is a C# class library, mainly targeted for ASP.NET MVC apps with a simple and pragmatic approach
+                    to deal with wise sequential step Forms that may require flow control  between steps.
+                    Rather than complex implementations, Brick wizard relies on a set of conventions that allow us to make simple controllers
+                    and avoid extra complexity in our views.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>Core brick wizard engine Concepts</h2>
+                 <ul>
+                    <li>Wizard</li>
+                    <li>Map</li>
+                    <li>Route</li>
+                    <li>Step</li>
+                    <li>TriggerPoint</li>
+                </ul>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Breef explanation</h2>
+                <p>
+                    The Route class represents an unique path that the wizard can run from end to end. This path is represented by a collection of steps. The Wizard Map represents all unique routes available for the wizard to flow. In essence class Map is a set of routes, and each route is a set of steps (class Steps). On top of this, the TriggerPoint class represents a set of specific steps in Map where routes intercept and the wizard can shift to another route.
+
+                    For each wizard type we want to create, we need to define a class which inherits from BrickWizard.Wizard abstract class and define the Model that the wizard will deal with.
+                    The Wizard abstract class provides us all implementations we need... except for a few abstract methods/Properties that we need to override. This abstract concepts will be specific for your own wizard.
+                </p>
+                @*<p><a class="btn btn-default" href="https://github.com/Brickable/BrickWizard/wiki" target="_blank">Learn more &raquo;</a></p>*@
+            </div>
+           
+        </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+      

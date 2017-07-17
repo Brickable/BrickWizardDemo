@@ -1,42 +1,52 @@
 ﻿@model WizardDemo.Models.PersonViewModel
-<div id="form-container">
-    @*@Html.Partial("NavBar", Model.NavBar);*@
-    <div>
-        @Model.NavBar.FirstOrDefault(x => x.Current).Number
-        <br />
-        @Model.NavBar.FirstOrDefault(x => x.Current).Name
-        <br />
-        <strong>
-            @ViewBag.PATHLOG
-        </strong>
-    </div>
 
-    @using (Ajax.BeginForm(
-            Model.ActionName,
-            "Person",
-            new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "form-container" },
-            new { id = "person-form" }))
+@{
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "form-container"
+    };
+
+    var LabelProperties = new { @class = "horizontal-form-label" };
+    var InputProperties = new { @class = "form-control form-control-inline" };
+    var ErrorMessageProperties = new { @class = "validation-error-inline" };
+}
+
+<div id="form-container">
+    @Html.Partial("NavBarDefault", Model.NavBar)
+
+    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class = "brick-wizard-form" }))
     {
         <fieldset>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PersonWorkInfo.WorkTitle)
-                @Html.TextBoxFor(model => model.PersonWorkInfo.WorkTitle, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonWorkInfo.WorkTitle)
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonWorkInfo.WorkTitle, LabelProperties)
+                        @Html.TextBoxFor(model => model.PersonWorkInfo.WorkTitle, InputProperties)
+                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.WorkTitle, "", ErrorMessageProperties)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonWorkInfo.Company,LabelProperties)
+                        @Html.TextBoxFor(model => model.PersonWorkInfo.Company, InputProperties)
+                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.Company, "", ErrorMessageProperties)
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PersonWorkInfo.Company)
-                @Html.TextBoxFor(model => model.PersonWorkInfo.Company, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PersonWorkInfo.Company)
+
+            <div class="btn-group" role="group" aria-label="...">
+                <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
+                    <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
+                </a>
+
+                <button type="submit" class="btn btn-primary">
+                    NEXT <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
             </div>
-            <a class="back-command">PREVIOUS</a>
-            <input type="submit" value="NEXT" />
         </fieldset>
     }
-    <script>
-        $('.back-command').on("click", function (e) {
-            e.preventDefault();
-            $('#person-form').attr('action', '@Url.Action(Model.PreviousStep.ActionName, "Person")').submit();
-        });
-    </script>
 </div>
+<script>
+    brickWizardHandlerInit();
+</script>
 

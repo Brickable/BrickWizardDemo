@@ -22,3 +22,70 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*bootstrap override*/
+html {
+    overflow-y: scroll;
+}
+
+.badge {
+    margin-right: 5px;
+}
+.form-horizontal .control-label {
+    text-align: left;
+}
+
+.field-validation-error {
+    font-weight: 900;
+    color: #ffccbc;
+}
+
+.navbar-brand, .footer-content {
+    padding: 5px 10px;
+}
+
+img.navbar-brand-logo {
+    position: absolute;
+    z-index: 999999 !important;
+}
+
+.body-content {
+    margin-top: 15px;
+}
+
+footer.navbar-fixed-bottom {
+    height: 40px;
+    background-color: #e78200;
+}
+
+.body-content {
+    margin-bottom: 30px;
+}
+.footer-content {
+    padding: 9px;
+}
+
+input.input-validation-error {
+    box-shadow: 5px 5px;
+    box-shadow: 2px 2px 2px transparent inset, 0 0 8px rgba(255, 204, 188, 1) !important;
+}
+
+.form-control-inline {
+    display:inline;
+}
+.validation-error-inline {
+    padding-left: 10px;
+}
+
+.horizontal-form-label{
+    display:block;
+}
+
+/*Wizard classes*/
+.wizard-nav-container {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+

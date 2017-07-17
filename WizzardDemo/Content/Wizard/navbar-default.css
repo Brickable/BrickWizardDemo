@@ -1,0 +1,28 @@
+﻿.nav-pills > li a {
+    background-color: #546575;
+}
+
+.nav-pills > li:hover a {
+    background-color: #aaa;
+    color: #ebebeb;
+}
+
+.nav-pills > li.active a {
+    background-color: #e78200;
+    color: #ebebeb;
+}
+
+.nav-pills > li.future-tab {
+    background-color: #546575;
+    color: #ebebeb;
+    opacity: 0.3;
+}
+
+.nav-pills > li.future-tab:hover {
+    opacity: 0.3;
+}
+
+.nav-pills > li.future-tab a:hover {
+    background-color: #546575;
+    color: #ebebeb;
+}
