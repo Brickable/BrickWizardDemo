@@ -1,13 +1,60 @@
 ﻿@model WizardDemo.Models.PersonResult
 
+@using Newtonsoft.Json
 <h1>View model:</h1>
 
-@Html.Raw(Json.Encode(Model.ViewModel.PersonName));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonBirthday));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonAddress));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonFamily));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonIsStudent));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonStudentInfo));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonWorkInfo));
-@Html.Raw(Json.Encode(Model.ViewModel.PersonAcceptTerms));
+<style>
+    pre {
+        color: white;
+        background-color: #2b3e50;
+        border:0;
+    }
+    .string {
+        color: lightgray;
+    }
 
+    .number {
+        color: darkorange;
+    }
+
+    .boolean {
+        color: lightskyblue;
+    }
+
+    .null {
+        color: magenta;
+    }
+
+    .key {
+        color: lawngreen;
+    }
+</style>
+<script>
+    function output(inp) {
+        document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+    }
+
+    function syntaxHighlight(json) {
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    var theObj =@Html.Raw(JsonConvert.SerializeObject(Model.ViewModel))
+    var str = JSON.stringify(theObj, null, 4);
+    output(syntaxHighlight(str));
+
+</script>

@@ -1,6 +1,6 @@
 ﻿//Conventions
-//- add css class "wizard-post-action" to every archors that intend to submit
-//- add attribute "data-post-action" to every archors that intend to submit and assign to it the post action path
+//- add css class "wizard-post-action" and attribute "data-post-action" to every archors that intend to submit
+//  and assign to it the post action path
 
 function brickWizardHandlerInit() {
     $("a[class$='wizard-post-action']").on("click", function (e) {
