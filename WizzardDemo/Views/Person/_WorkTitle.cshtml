@@ -1,48 +1,29 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@{
-    AjaxOptions ajaxOptions = new AjaxOptions
-    {
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "form-container"
-    };
-
-    var LabelProperties = new { @class = "horizontal-form-label" };
-    var InputProperties = new { @class = "form-control form-control-inline" };
-    var ErrorMessageProperties = new { @class = "validation-error-inline" };
-}
+@using WizardDemo.HtmlHelpers
 
 <div id="form-container">
     @Html.Partial("NavBarDefault", Model.NavBar)
 
-    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class = "brick-wizard-form" }))
+    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, StandardHtmlAttributes.AjaxOptions, StandardHtmlAttributes.BrickWizardForm("person-form")))
     {
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PersonWorkInfo.WorkTitle, LabelProperties)
-                        @Html.TextBoxFor(model => model.PersonWorkInfo.WorkTitle, InputProperties)
-                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.WorkTitle, "", ErrorMessageProperties)
+                        @Html.LabelFor(model => model.PersonWorkInfo.WorkTitle, StandardHtmlAttributes.Label)
+                        @Html.TextBoxFor(model => model.PersonWorkInfo.WorkTitle, StandardHtmlAttributes.Input)
+                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.WorkTitle, "", StandardHtmlAttributes.ErrorMessage)
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PersonWorkInfo.Company,LabelProperties)
-                        @Html.TextBoxFor(model => model.PersonWorkInfo.Company, InputProperties)
-                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.Company, "", ErrorMessageProperties)
+                        @Html.LabelFor(model => model.PersonWorkInfo.Company, StandardHtmlAttributes.Label)
+                        @Html.TextBoxFor(model => model.PersonWorkInfo.Company, StandardHtmlAttributes.Input)
+                        @Html.ValidationMessageFor(model => model.PersonWorkInfo.Company, "", StandardHtmlAttributes.ErrorMessage)
                     </div>
                 </div>
             </div>
 
-            <div class="btn-group" role="group" aria-label="...">
-                <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
-                    <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
-                </a>
-
-                <button type="submit" class="btn btn-primary">
-                    NEXT <i class="glyphicon glyphicon-chevron-right"></i>
-                </button>
-            </div>
+           @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
         </fieldset>
     }
 </div>

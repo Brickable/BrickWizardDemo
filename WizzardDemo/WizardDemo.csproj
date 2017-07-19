@@ -156,7 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\FormControlHelper.cs" />
     <Compile Include="HtmlHelpers\WizardNavBarHelper.cs" />
+    <Compile Include="HtmlHelpers\StandardHtmlAttributes.cs" />
     <Compile Include="Models\PersonWizard.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

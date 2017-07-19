@@ -1,44 +1,24 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@{
-    AjaxOptions ajaxOptions = new AjaxOptions
-    {
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "form-container"
-    };
-
-    var LabelProperties = new { @class = "horizontal-form-label" };
-    var InputProperties = new { @class = "form-control form-control-inline" };
-    var checkBoxProperties = new { @class = "checkbox" };
-    var ErrorMessageProperties = new { @class = "validation-error-inline" };
-}
+@using WizardDemo.HtmlHelpers
 
 <div id="form-container">
     @Html.Partial("NavBarDefault", Model.NavBar)
 
-    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class="brick-wizard-form" }))
+    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, StandardHtmlAttributes.AjaxOptions, StandardHtmlAttributes.BrickWizardForm("person-form")))
     {
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.PersonAcceptTerms.AcceptTerms, LabelProperties)
-                        @Html.CheckBoxFor(model => model.PersonAcceptTerms.AcceptTerms, checkBoxProperties)
-                        @Html.ValidationMessageFor(model => model.PersonAcceptTerms.AcceptTerms, "", ErrorMessageProperties)
+                        @Html.LabelFor(model => model.PersonAcceptTerms.AcceptTerms, StandardHtmlAttributes.Label)
+                        @Html.CheckBoxFor(model => model.PersonAcceptTerms.AcceptTerms, StandardHtmlAttributes.CheckBox)
+                        @Html.ValidationMessageFor(model => model.PersonAcceptTerms.AcceptTerms, "", StandardHtmlAttributes.ErrorMessage)
                     </div>
                 </div>
             </div>
 
-            <div class="btn-group" role="group" aria-label="...">
-                <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
-                    <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
-                </a>
-
-                <button type="submit" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-floppy-disk"></i> SAVE
-                </button>
-            </div>
+            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Save, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
         </fieldset>
     }
 </div>
@@ -46,3 +26,5 @@
 <script>
     brickWizardHandlerInit();
 </script>
+
+

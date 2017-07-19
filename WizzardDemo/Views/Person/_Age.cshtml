@@ -1,58 +1,37 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@{
-    AjaxOptions ajaxOptions = new AjaxOptions
-    {
-       
-        HttpMethod = "POST",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "form-container"
-    };
+@using WizardDemo.HtmlHelpers
 
-    var LabelProperties = new { @class = "horizontal-form-label" };
-    var InputProperties = new { @class = "form-control form-control-inline" };
-    var CheckBoxProperties = new { @class = "checkbox" };
-    var ErrorMessageProperties = new { @class = "validation-error-inline" };
-}
-<div id="main">
-    <div class="main-container" data-namespace="person-form">
-        <div id="form-container">
-            @Html.Partial("NavBarDefault", Model.NavBar, new ViewDataDictionary { { "ControllerName", Model.ControllerName } })
 
-            @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, ajaxOptions, new { id = "person-form", @class = "brick-wizard-form" }))
+<div class="main-container" data-namespace="person-form">
+    <div id="form-container">
+        @Html.Partial("NavBarDefault", Model.NavBar, new ViewDataDictionary { { "ControllerName", Model.ControllerName } })
+
+        @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, StandardHtmlAttributes.AjaxOptions, StandardHtmlAttributes.BrickWizardForm("person-form")))
             {
-                <fieldset>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.PersonBirthday.BirthDay, LabelProperties)                             
-                                @Html.EditorFor(model => model.PersonBirthday.BirthDay, new { htmlAttributes = InputProperties })
-                                @Html.ValidationMessageFor(model => model.PersonBirthday.BirthDay, "", ErrorMessageProperties)
-                            </div>
+            <fieldset>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PersonBirthday.BirthDay, StandardHtmlAttributes.Label)
+                            @Html.EditorFor(model => model.PersonBirthday.BirthDay, new { htmlAttributes = StandardHtmlAttributes.Input })
+                            @Html.ValidationMessageFor(model => model.PersonBirthday.BirthDay, "", StandardHtmlAttributes.ErrorMessage)
+                        </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.PersonBirthday.Genre, LabelProperties)
-                                @Html.CheckBoxFor(model => model.PersonBirthday.Genre, CheckBoxProperties)
-                                @Html.ValidationMessageFor(model => model.PersonBirthday.Genre, "", ErrorMessageProperties)
-                            </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PersonBirthday.Genre, StandardHtmlAttributes.Label)
+                            @Html.CheckBoxFor(model => model.PersonBirthday.Genre, StandardHtmlAttributes.CheckBox)
+                            @Html.ValidationMessageFor(model => model.PersonBirthday.Genre, "", StandardHtmlAttributes.ErrorMessage)
                         </div>
                     </div>
+                </div>
 
-                    <div class="btn-group" role="group" aria-label="...">
-                        <a class="btn btn-default wizard-post-action" data-post-action="@Url.Action(Model.PreviousStep.ActionName, Model.ControllerName)">
-                            <i class="glyphicon glyphicon-chevron-left"></i> PREVIOUS
-                        </a>
-
-                        <button type="submit" class="btn btn-primary">
-                            NEXT <i class="glyphicon glyphicon-chevron-right"></i>
-                        </button>
-                    </div>
-                </fieldset>
+                @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
+            </fieldset>
             }
-        </div>
     </div>
 </div>
-<script src="~/Scripts/wizard.handler.js"></script>
+
 <script>
     brickWizardHandlerInit();
     var dt = new HaDateTimePicker("#PersonBirthday_BirthDay");
