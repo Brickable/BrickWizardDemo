@@ -156,6 +156,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\BrickWizardSubmitActionsHelper.cs" />
     <Compile Include="HtmlHelpers\FormControlHelper.cs" />
     <Compile Include="HtmlHelpers\WizardNavBarHelper.cs" />
     <Compile Include="HtmlHelpers\StandardHtmlAttributes.cs" />

@@ -12,17 +12,8 @@
             <fieldset>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.PersonBirthday.BirthDay, StandardHtmlAttributes.Label)
-                            @Html.EditorFor(model => model.PersonBirthday.BirthDay, new { htmlAttributes = StandardHtmlAttributes.Input })
-                            @Html.ValidationMessageFor(model => model.PersonBirthday.BirthDay, "", StandardHtmlAttributes.ErrorMessage)
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.PersonBirthday.Genre, StandardHtmlAttributes.Label)
-                            @Html.CheckBoxFor(model => model.PersonBirthday.Genre, StandardHtmlAttributes.CheckBox)
-                            @Html.ValidationMessageFor(model => model.PersonBirthday.Genre, "", StandardHtmlAttributes.ErrorMessage)
-                        </div>
+                        @Html.FormControl(model => model.PersonBirthday.BirthDay, TypeOfInput.DateTime)                   
+                        @Html.FormControl(model => model.PersonBirthday.Genre, TypeOfInput.CheckBox)
                     </div>
                 </div>
 

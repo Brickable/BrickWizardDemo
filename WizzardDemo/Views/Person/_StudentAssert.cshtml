@@ -10,11 +10,7 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PersonIsStudent.IsStudent, StandardHtmlAttributes.Label)
-                        @Html.CheckBoxFor(model => model.PersonIsStudent.IsStudent, StandardHtmlAttributes.CheckBox)
-                        @Html.ValidationMessageFor(model => model.PersonIsStudent.IsStudent, "", StandardHtmlAttributes.ErrorMessage)
-                    </div>
+                    @Html.FormControl(model => model.PersonIsStudent.IsStudent, TypeOfInput.CheckBox)
                 </div>
             </div>
 

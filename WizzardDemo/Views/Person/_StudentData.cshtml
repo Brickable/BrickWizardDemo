@@ -10,16 +10,8 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PersonStudentInfo.SchoolName, StandardHtmlAttributes.Label)
-                        @Html.TextBoxFor(model => model.PersonStudentInfo.SchoolName, StandardHtmlAttributes.Input)
-                        @Html.ValidationMessageFor(model => model.PersonStudentInfo.SchoolName, "", StandardHtmlAttributes.ErrorMessage)
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PersonStudentInfo.SchoolYear, StandardHtmlAttributes.Label)
-                        @Html.TextBoxFor(model => model.PersonStudentInfo.SchoolYear, StandardHtmlAttributes.Input)
-                        @Html.ValidationMessageFor(model => model.PersonStudentInfo.SchoolYear, "", StandardHtmlAttributes.ErrorMessage)
-                    </div>
+                    @Html.FormControl(model => model.PersonStudentInfo.SchoolName, TypeOfInput.Text)
+                    @Html.FormControl(model => model.PersonStudentInfo.SchoolYear, TypeOfInput.Text)
                 </div>
             </div>
 
