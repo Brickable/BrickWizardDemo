@@ -11,15 +11,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     @Html.FormControl(model => model.PersonWorkInfo.WorkTitle, TypeOfInput.Text)
-                    @Html.FormControl(model => model.PersonWorkInfo.Company, TypeOfInput.Text)                 
+                    @Html.FormControl(model => model.PersonWorkInfo.Company, TypeOfInput.Text)
                 </div>
             </div>
-
-           @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
+            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
         </fieldset>
     }
 </div>
+
 <script>
     brickWizardHandlerInit();
 </script>
-

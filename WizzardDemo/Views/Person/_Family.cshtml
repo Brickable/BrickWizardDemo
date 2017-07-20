@@ -5,8 +5,8 @@
 <div id="form-container">
     @Html.Partial("NavBarDefault", Model.NavBar)
 
-   @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, StandardHtmlAttributes.AjaxOptions, StandardHtmlAttributes.BrickWizardForm("person-form")))
-   {
+    @using (Ajax.BeginForm(Model.ActionName, Model.ControllerName, StandardHtmlAttributes.AjaxOptions, StandardHtmlAttributes.BrickWizardForm("person-form")))
+    {
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -14,7 +14,6 @@
                     @Html.FormControl(model => model.PersonFamily.ChildNumbers, TypeOfInput.Text)
                 </div>
             </div>
-
             @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
         </fieldset>
     }

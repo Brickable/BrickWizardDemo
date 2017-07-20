@@ -58,10 +58,14 @@ namespace WizardDemo.Controllers
         [HttpPost]
         public ActionResult PostAcceptTerms(PersonViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
+            }
             SessionPersonWizard.Sync(model.PersonAcceptTerms);
             SessionPersonWizard.ClearUnusedSteps();
             var m = new PersonResult { ViewModel = SessionPersonWizard.Model };
-            return PartialView("_PersonResult",m );
+            return PartialView("_PersonResult", m);
         }
         [HttpPost]
         public ActionResult PostStudentAssert(PersonViewModel model)

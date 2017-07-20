@@ -53,7 +53,7 @@
         });
     }
 
-    var theObj =@Html.Raw(JsonConvert.SerializeObject(Model.ViewModel))
+    var theObj =@Html.Raw(JsonConvert.SerializeObject(Model.ViewModel));
     var str = JSON.stringify(theObj, null, 4);
     output(syntaxHighlight(str));
 

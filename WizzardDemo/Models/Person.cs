@@ -103,8 +103,7 @@ namespace WizardDemo.Models
     public class PersonAcceptTermsViewModel
     {
         [Required, DisplayName("Accept Terms")]
-        [Range( 1,1, ErrorMessage = "You need to tick the Accept Terms checkbox")]
-
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You need to tick the Accept Terms checkbox")]
         public bool AcceptTerms { get; set; }
     }
 

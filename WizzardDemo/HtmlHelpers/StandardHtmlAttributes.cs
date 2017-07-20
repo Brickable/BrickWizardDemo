@@ -17,7 +17,7 @@ namespace WizardDemo.HtmlHelpers
         public static object Label => new { @class = "horizontal-form-label" }; 
         public static object Input => new { @class = "form-control form-control-inline" };
         public static object ErrorMessage => new { @class = "validation-error-inline" };
-        public static object CheckBox = new { @class = "checkbox" };
+        public static object CheckBox = new { @class = "checkbox checkbox-error-inline" };
 
         public static object BrickWizardForm() => new { id = "form", @class = "brick-wizard-form" };
         public static object BrickWizardForm(string id) => new { id = id, @class = "brick-wizard-form" };

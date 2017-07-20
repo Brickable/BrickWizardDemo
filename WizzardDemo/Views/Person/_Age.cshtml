@@ -2,7 +2,6 @@
 
 @using WizardDemo.HtmlHelpers
 
-
 <div class="main-container" data-namespace="person-form">
     <div id="form-container">
         @Html.Partial("NavBarDefault", Model.NavBar, new ViewDataDictionary { { "ControllerName", Model.ControllerName } })
@@ -12,24 +11,16 @@
             <fieldset>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        @Html.FormControl(model => model.PersonBirthday.BirthDay, TypeOfInput.DateTime)                   
+                        @Html.FormControl(model => model.PersonBirthday.BirthDay, TypeOfInput.DateTime)
                         @Html.FormControl(model => model.PersonBirthday.Genre, TypeOfInput.CheckBox)
                     </div>
                 </div>
-
                 @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
             </fieldset>
-            }
+        }
     </div>
 </div>
 
 <script>
     brickWizardHandlerInit();
-    var dt = new HaDateTimePicker("#PersonBirthday_BirthDay");
-    dt.options.disableTime = true;
-    document.getElementById("PersonBirthday_BirthDay").addEventListener("click", function () {
-        dt.show();
-    });
 </script>
-
-

@@ -77,8 +77,12 @@ input.input-validation-error {
     padding-left: 10px;
 }
 
-.horizontal-form-label{
-    display:block;
+.checkbox-error-inline {
+    display: inline;
+}
+
+.horizontal-form-label {
+    display: block;
 }
 
 /*Wizard classes*/

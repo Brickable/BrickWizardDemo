@@ -10,10 +10,9 @@
         <fieldset>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @Html.FormControl(model => model.PersonAcceptTerms.AcceptTerms, TypeOfInput.CheckBox)                 
+                    @Html.FormControl(model => model.PersonAcceptTerms.AcceptTerms, TypeOfInput.CheckBox)
                 </div>
             </div>
-
             @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Save, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
         </fieldset>
     }
@@ -22,5 +21,3 @@
 <script>
     brickWizardHandlerInit();
 </script>
-
-

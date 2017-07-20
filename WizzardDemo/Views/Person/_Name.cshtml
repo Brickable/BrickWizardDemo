@@ -14,22 +14,13 @@
                     @Html.FormControl(model => model.PersonName.PersonLastName, TypeOfInput.Text)
                 </div>
             </div>
-
-            @Html.BrickWizardSubmitActions(ButtonsToRender.JustSubmit,SubmitStyle.Next)
+            @Html.BrickWizardSubmitActions(ButtonsToRender.JustSubmit, SubmitStyle.Next)
         </fieldset>
     }
 </div>
-
 
 <script>
     $(function () {
         brickWizardHandlerInit();
     });
 </script>
-
-
-
-
-
-
-
