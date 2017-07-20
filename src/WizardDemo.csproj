@@ -180,9 +180,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ha-datetimepicker\ha-datetimepicker.js" />
@@ -251,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
@@ -260,7 +256,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BrickWizard\BrickWizard.csproj">
+    <ProjectReference Include="..\..\BrickWizard\src\BrickWizard.csproj">
       <Project>{7e13b61f-c767-47de-95c8-2f2b4b70c7c3}</Project>
       <Name>BrickWizard</Name>
     </ProjectReference>
