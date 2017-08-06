@@ -151,6 +151,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
+    <Compile Include="Areas\People\Controllers\PersonForAreaController.cs" />
+    <Compile Include="Areas\People\Models\PersonForAreaWizard.cs" />
+    <Compile Include="Areas\People\PeopleAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Global.asax.cs">
@@ -200,6 +203,8 @@
     <Content Include="Content\ha-dp-fonts\subset-DINNextLTW23-Regular.woff" />
     <Content Include="Content\ha-dp-fonts\subset-DINNextLTW23-Regular.woff2" />
     <Content Include="Content\ha-dp-fonts\Yekan.woff" />
+    <Content Include="Areas\People\Views\web.config" />
+    <Content Include="Areas\People\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -231,20 +236,23 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Person\_Name.cshtml" />
+    <Content Include="Views\Shared\_Name.cshtml" />
     <Content Include="Views\Shared\_ViewImports.cshtml" />
-    <Content Include="Views\Person\_Age.cshtml" />
-    <Content Include="Views\Person\_WorkTitle.cshtml" />
-    <Content Include="Views\Person\_Family.cshtml" />
-    <Content Include="Views\Person\_AcceptTerms.cshtml" />
-    <Content Include="Views\Person\_StudentAssert.cshtml" />
-    <Content Include="Views\Person\_StudentData.cshtml" />
+    <Content Include="Views\Shared\_Age.cshtml" />
+    <Content Include="Views\Shared\_WorkTitle.cshtml" />
+    <Content Include="Views\Shared\_Family.cshtml" />
+    <Content Include="Views\Shared\_AcceptTerms.cshtml" />
+    <Content Include="Views\Shared\_StudentAssert.cshtml" />
+    <Content Include="Views\Shared\_StudentData.cshtml" />
     <Content Include="Scripts\wizard.handler.js" />
     <Content Include="Views\Shared\NavBarDefault.cshtml" />
-    <Content Include="Views\Person\_PersonResult.cshtml" />
+    <Content Include="Views\Shared\_PersonResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\People\Views\PersonForArea\" />
+    <Folder Include="Areas\People\Views\Shared\" />
+    <Folder Include="Views\Person\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
