@@ -10,7 +10,7 @@ namespace WizardDemo.Models
 {
     public class PersonWizard : Wizard<PersonViewModel>
     {
-        public PersonWizard(string controllerName):base(controllerName){}
+        public PersonWizard(string controllerName) : base(controllerName) { }
 
         const string Name = "PostName";
         const string Age = "PostAge";
@@ -20,7 +20,7 @@ namespace WizardDemo.Models
         const string StudentAssert = "PostStudentAssert";
         const string StudentData = "PostStudentData";
 
-        protected override int MaxTabs => 6;
+        protected override int MaxTabs => 5;
         protected override Steps Steps
         {
             get

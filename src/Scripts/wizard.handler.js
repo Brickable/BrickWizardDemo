@@ -3,6 +3,7 @@
 //  and assign to it the post action path
 
 function brickWizardHandlerInit() {
+   
     $("a[class$='wizard-post-action']").on("click", function (e) {
         e.preventDefault();
         var form = $(".brick-wizard-form");
@@ -12,6 +13,28 @@ function brickWizardHandlerInit() {
         var url = $(this).data("post-action");
         form.attr("action", url).submit();
     });
+
+    $(".brick-wizard-form").on("submit", function (e) {     
+        var form = $(".brick-wizard-form");
+        if (form.valid()) {
+            e.preventDefault();
+            var data = form.serialize();
+            var url = form.attr("action");
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: function (data) {
+                    replaceContent(data);
+                }
+            });
+        }
+    });
+
+    function replaceContent(data) {
+        var replaceableEl = form.data("replace-target-selector");
+        $(replaceableEl).html(data);
+    }
 
     var form = $(".brick-wizard-form");
     $.validator.unobtrusive.parse(form);

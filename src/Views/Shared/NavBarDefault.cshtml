@@ -14,7 +14,7 @@
         {
             if (tab.Number < currentTabNumber)
             {
-                @Html.WizardTab(tab, TabTime.Past, navBarType, Url.Action(tab.Action, @ViewData["ControllerName"]))
+                @Html.WizardTab(tab, TabTime.Past, navBarType, Url.Action(tab.Action, Model.ControllerName))
             }
             else if (tab.Number == currentTabNumber)
             {
