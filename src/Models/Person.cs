@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WizardDemo.Filters;
 
 namespace WizardDemo.Models
 {
@@ -84,7 +85,13 @@ namespace WizardDemo.Models
     {
         [Required, DisplayName("School Year")]
         public int SchoolYear { get; set; }
+        [DisplayName("School Name")]
         public string SchoolName { get; set; }
+        [DisplayName("Begin date")]
+        public DateTime? From { get; set; }
+        [DisplayName("End Date")]
+        [DateGreaterThan("From","Need to be greater than begin date")]
+        public DateTime? To { get; set; }
     }
     public class PersonWorkInfoViewModel
     {
@@ -106,6 +113,5 @@ namespace WizardDemo.Models
         [Range(typeof(bool), "true", "true", ErrorMessage = "You need to tick the Accept Terms checkbox")]
         public bool AcceptTerms { get; set; }
     }
-
 
 }
