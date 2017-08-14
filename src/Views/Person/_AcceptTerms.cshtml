@@ -1,0 +1,17 @@
+﻿@model WizardDemo.Models.PersonViewModel
+
+@Html.DisplayFor(m => m.NavBar)
+
+<form action="@Url.Action(Model.ActionName,Model.ControllerName, new { area = Model.AreaName })" , data-replace-target-selector="#form-container" class="brick-wizard-form">
+    <fieldset>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.FormControl(model => model.PersonAcceptTerms.AcceptTerms, TypeOfInput.CheckBox)
+            </div>
+        </div>
+        @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Save, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
+    </fieldset>
+</form>
+<script>
+    brickWizardHandlerInit();
+</script>

@@ -1,7 +1,7 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 @using WizardDemo.Areas.People.Models
 
-@Html.Partial("NavBarDefault", Model.NavBar)
+@Html.DisplayFor(m => m.NavBar)
 
 <form action="@Url.Action(Model.ActionName, Model.ControllerName, new { area = Model.AreaName })" , data-replace-target-selector="#form-container" class="brick-wizard-form">
     <fieldset>

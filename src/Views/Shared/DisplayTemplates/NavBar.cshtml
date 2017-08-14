@@ -1,7 +1,30 @@
-﻿
+﻿@model BrickWizard.NavBar
+
+@using WizardDemo.HtmlHelpers
+
+<link rel="stylesheet" type="text/css" href="~/Content/Wizard/navbar-default.css" />
 @{
-    ViewBag.Title = "NavBar";
+    var currentTabNumber = Model.Tabs.FirstOrDefault(x => x.Current).Number;
+    var navBarType = NavBarType.NavBarDefault;
 }
 
-<h2>NavBar</h2>
+<div class="wizard-nav-container">
+    <ul class="nav wizard-nav-tab nav-pills">
+        @foreach (var tab in Model.Tabs)
+        {
+            if (tab.Number < currentTabNumber)
+            {
+                @Html.WizardTab(tab, TabTime.Past, navBarType, Url.Action(tab.Action, Model.ControllerName))
+            }
+            else if (tab.Number == currentTabNumber)
+            {
+                @Html.WizardTab(tab, TabTime.Present, navBarType)
+            }
+            else
+            {
+                @Html.WizardTab(tab, TabTime.Future, navBarType)
+            }
+        }
+    </ul>
+</div>
 
