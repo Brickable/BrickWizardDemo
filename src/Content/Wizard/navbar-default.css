@@ -7,22 +7,22 @@
     color: #ebebeb;
 }
 
-.nav-pills > li.active a {
+.nav-pills > li.tab-active a {
     background-color: #e78200;
     color: #ebebeb;
 }
 
-.nav-pills > li.future-tab {
+.nav-pills > li.tab-disable {
     background-color: #546575;
     color: #ebebeb;
     opacity: 0.3;
 }
 
-.nav-pills > li.future-tab:hover {
+.nav-pills > li.tab-disable:hover {
     opacity: 0.3;
 }
 
-.nav-pills > li.future-tab a:hover {
+.nav-pills > li.tab-disable a:hover {
     background-color: #546575;
     color: #ebebeb;
 }

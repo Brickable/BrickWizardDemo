@@ -49,8 +49,8 @@ namespace WizardDemo.Areas.People.Models
                          1,
                          new List<StepReference>
                          {
-                            new StepReference(Name,1),
-                            new StepReference(Age,2),
+                            new StepReference(Name,1, 3),
+                            new StepReference(Age,2, 3),
                             new StepReference(WorkTitle,3),
                             new StepReference(Family,4),
                             new StepReference(StudentAssert,5),

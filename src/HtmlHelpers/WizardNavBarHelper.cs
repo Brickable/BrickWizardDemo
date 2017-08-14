@@ -25,15 +25,23 @@ namespace WizardDemo.HtmlHelpers
             string html;
             if (tabTime == TabTime.Past)
             {
-                html = $"<li class='past-tab'><a class='wizard-post-action' data-toggle='tab' data-post-action={actionUrl} href='javascript:void(0)'> <span class='badge'>{tab.Number}</span>{tab.Name}</a> </li>";
+                if (tab.Enable)
+                {
+                    html = $"<li class='tab-enable'><a class='wizard-post-action' data-toggle='tab' data-post-action={actionUrl} href='javascript:void(0)'> <span class='badge'>{tab.Number}</span>{tab.Name}</a> </li>";
+                }
+                else
+                {
+                    html = $"<li class='tab-disable'><a href='javascript:void(0)'> <span class='badge'>{tab.Number}</span>{tab.Name}</a> </li>";
+                }
+                
             }
             else if (tabTime == TabTime.Present)
             {
-                html = $"<li class='active'> <a data-post-action={actionUrl} href='javascript:void(0)'>  <span class='badge'>{tab.Number}</span> {tab.Name}</a> </li>";
+                html = $"<li class='tab-active'> <a data-post-action={actionUrl} href='javascript:void(0)'>  <span class='badge'>{tab.Number}</span> {tab.Name}</a> </li>";
             }
             else
             {
-                html = $"<li class='future-tab'> <a href='javascript:void(0)'>  <span class='badge'>{tab.Number}</span> {tab.Name}</a> </li>";
+                html = $"<li class='tab-disable'> <a href='javascript:void(0)'>  <span class='badge'>{tab.Number}</span> {tab.Name}</a> </li>";
             }
             return new MvcHtmlString(html);
         }
