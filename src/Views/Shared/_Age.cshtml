@@ -1,7 +1,5 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@using WizardDemo.HtmlHelpers
-
 <div id="form-container">
     @Html.Partial("NavBarDefault", Model.NavBar)
 
@@ -13,7 +11,7 @@
                     @Html.FormControl(model => model.PersonBirthday.Genre, TypeOfInput.CheckBox)
                 </div>
             </div>
-            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
+            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
         </fieldset>
     </form>
     <script>

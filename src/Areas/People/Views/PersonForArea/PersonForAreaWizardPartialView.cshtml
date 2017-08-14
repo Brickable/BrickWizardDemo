@@ -1,0 +1,57 @@
+﻿@model WizardDemo.Models.PersonViewModel
+@using WizardDemo.Areas.People.Models
+
+@Html.Partial("NavBarDefault", Model.NavBar)
+
+<form action="@Url.Action(Model.ActionName, Model.ControllerName, new { area = Model.AreaName })" , data-replace-target-selector="#form-container" class="brick-wizard-form">
+    <fieldset>
+        @{
+            if (Model.ActionName == PersonForAreaWizardSteps.AcceptTerms)
+            {
+                @Html.EditorFor(m => m.PersonAcceptTerms)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.Age)
+            {
+                @Html.EditorFor(m => m.PersonBirthday)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.Family)
+            {
+                @Html.EditorFor(m => m.PersonFamily)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.Name)
+            {
+                @Html.EditorFor(m => m.PersonName)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.StudentAssert)
+            {
+                @Html.EditorFor(m => m.PersonIsStudent)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.StudentData)
+            {
+                @Html.EditorFor(m => m.PersonStudentInfo)
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.WorkTitle)
+            {
+                @Html.EditorFor(m => m.PersonWorkInfo)
+            }
+
+
+            if (Model.ActionName == PersonForAreaWizardSteps.Name)
+            {
+                @Html.BrickWizardSubmitActions(ButtonsToRender.JustSubmit, SubmitStyle.Next, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
+            }
+            else if (Model.ActionName == PersonForAreaWizardSteps.AcceptTerms)
+            {
+                @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Save, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
+            }
+            else
+            {
+                @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
+            }
+        }
+    </fieldset>
+</form>
+<script>
+    brickWizardHandlerInit();
+</script>
+

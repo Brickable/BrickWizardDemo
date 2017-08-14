@@ -156,6 +156,7 @@
     <Compile Include="Areas\People\PeopleAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Filters\DateGreaterThanAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +184,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\custom.Validation.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ha-datetimepicker\ha-datetimepicker.js" />
@@ -205,6 +207,16 @@
     <Content Include="Content\ha-dp-fonts\Yekan.woff" />
     <Content Include="Areas\People\Views\web.config" />
     <Content Include="Areas\People\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonStudentInfoViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonNameViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonBirthdayViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonAddressViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonIsStudentViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonWorkInfoViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonFamilyViewModel.cshtml" />
+    <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonAcceptTermsViewModel.cshtml" />
+    <Content Include="Areas\People\Views\PersonForArea\PersonForAreaWizardEntryPoint.cshtml" />
+    <Content Include="Areas\People\Views\PersonForArea\PersonForAreaWizardPartialView.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -244,15 +256,13 @@
     <Content Include="Views\Shared\_AcceptTerms.cshtml" />
     <Content Include="Views\Shared\_StudentAssert.cshtml" />
     <Content Include="Views\Shared\_StudentData.cshtml" />
-    <Content Include="Scripts\wizard.handler.js" />
+    <Content Include="Scripts\app\wizard.handler.js" />
     <Content Include="Views\Shared\NavBarDefault.cshtml" />
     <Content Include="Views\Shared\_PersonResult.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\People\Views\PersonForArea\" />
-    <Folder Include="Areas\People\Views\Shared\" />
     <Folder Include="Views\Person\" />
   </ItemGroup>
   <ItemGroup>

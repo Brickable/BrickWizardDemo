@@ -1,0 +1,8 @@
+﻿@model WizardDemo.Models.PersonWorkInfoViewModel
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.FormControl(model => model.WorkTitle, TypeOfInput.Text)
+        @Html.FormControl(model => model.Company, TypeOfInput.Text)
+    </div>
+</div>

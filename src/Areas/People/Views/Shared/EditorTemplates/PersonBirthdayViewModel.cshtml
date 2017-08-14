@@ -1,0 +1,7 @@
+﻿@model WizardDemo.Models.PersonBirthdayViewModel
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.FormControl(model => model.BirthDay, TypeOfInput.DateTime)
+        @Html.FormControl(model => model.Genre, TypeOfInput.CheckBox)
+    </div>
+</div>

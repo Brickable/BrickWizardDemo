@@ -1,0 +1,7 @@
+﻿@model WizardDemo.Models.PersonFamilyViewModel
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.FormControl(model => model.SocialStatus, TypeOfInput.Text)
+        @Html.FormControl(model => model.ChildNumbers, TypeOfInput.Text)
+    </div>
+</div>

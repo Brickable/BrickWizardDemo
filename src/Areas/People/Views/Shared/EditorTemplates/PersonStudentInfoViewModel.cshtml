@@ -1,0 +1,10 @@
+﻿@model WizardDemo.Models.PersonStudentInfoViewModel
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.FormControl(model => model.SchoolName, TypeOfInput.Text)
+        @Html.FormControl(model => model.SchoolYear, TypeOfInput.Text)
+        @Html.FormControl(model => model.From, TypeOfInput.DateTime)
+        @Html.FormControl(model => model.To, TypeOfInput.DateTime)
+    </div>
+</div>

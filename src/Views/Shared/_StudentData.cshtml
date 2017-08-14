@@ -1,7 +1,5 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@using WizardDemo.HtmlHelpers
-
 <div id="form-container">
     @Html.Partial("NavBarDefault", Model.NavBar)
 
@@ -11,9 +9,11 @@
                 <div class="panel-body">
                     @Html.FormControl(model => model.PersonStudentInfo.SchoolName, TypeOfInput.Text)
                     @Html.FormControl(model => model.PersonStudentInfo.SchoolYear, TypeOfInput.Text)
+                    @Html.FormControl(model => model.PersonStudentInfo.From, TypeOfInput.DateTime)
+                    @Html.FormControl(model => model.PersonStudentInfo.To, TypeOfInput.DateTime)
                 </div>
             </div>
-            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStep.ActionName, Model.ControllerName))
+            @Html.BrickWizardSubmitActions(ButtonsToRender.Both, SubmitStyle.Next, Url.Action(Model.PreviousStepActionName, Model.ControllerName))
         </fieldset>
     </form>
     <script>

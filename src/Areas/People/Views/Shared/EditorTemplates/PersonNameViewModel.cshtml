@@ -1,0 +1,7 @@
+﻿@model WizardDemo.Models.PersonNameViewModel
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.FormControl(model => model.PersonFirstName, TypeOfInput.Text)
+        @Html.FormControl(model => model.PersonLastName, TypeOfInput.Text)
+    </div>
+</div>
