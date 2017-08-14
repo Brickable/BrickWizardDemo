@@ -60,8 +60,8 @@ namespace WizardDemo.Areas.People.Models
                          1,
                          new List<StepReference>
                          {
-                            new StepReference(PersonForAreaWizardSteps.Name,1),
-                            new StepReference(PersonForAreaWizardSteps.Age,2),
+                            new StepReference(PersonForAreaWizardSteps.Name,1,3),
+                            new StepReference(PersonForAreaWizardSteps.Age,2,3),
                             new StepReference(PersonForAreaWizardSteps.WorkTitle,3),
                             new StepReference(PersonForAreaWizardSteps.Family,4),
                             new StepReference(PersonForAreaWizardSteps.StudentAssert,5),
