@@ -26,7 +26,7 @@ namespace WizardDemo.Areas.People.Models
 
     public class PersonForAreaWizard : Wizard<PersonViewModel>
     {
-        public PersonForAreaWizard(string controllerName, string areaName) : base(controllerName, areaName) { }
+        public PersonForAreaWizard(string controllerName, string areaName, string[] frozenSteps = null) : base(controllerName, areaName, frozenSteps) { }
 
 
 
@@ -60,13 +60,13 @@ namespace WizardDemo.Areas.People.Models
                          1,
                          new List<StepReference>
                          {
-                            new StepReference(PersonForAreaWizardSteps.Name,1),
-                            new StepReference(PersonForAreaWizardSteps.Age,2),
-                            new StepReference(PersonForAreaWizardSteps.WorkTitle,3),
-                            new StepReference(PersonForAreaWizardSteps.Family,4),
-                            new StepReference(PersonForAreaWizardSteps.StudentAssert,5),
-                            new StepReference(PersonForAreaWizardSteps.StudentData,6),
-                            new StepReference(PersonForAreaWizardSteps.AcceptTerms,7),
+                            new StepReference(PersonForAreaWizardSteps.Name,3),
+                            new StepReference(PersonForAreaWizardSteps.Age,3),
+                            new StepReference(PersonForAreaWizardSteps.WorkTitle),
+                            new StepReference(PersonForAreaWizardSteps.Family),
+                            new StepReference(PersonForAreaWizardSteps.StudentAssert),
+                            new StepReference(PersonForAreaWizardSteps.StudentData),
+                            new StepReference(PersonForAreaWizardSteps.AcceptTerms),
 
                          })
                 });
