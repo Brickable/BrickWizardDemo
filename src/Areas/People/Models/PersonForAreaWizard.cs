@@ -66,8 +66,7 @@ namespace WizardDemo.Areas.People.Models
                             new StepReference(PersonForAreaWizardSteps.Family),
                             new StepReference(PersonForAreaWizardSteps.StudentAssert),
                             new StepReference(PersonForAreaWizardSteps.StudentData),
-                            new StepReference(PersonForAreaWizardSteps.AcceptTerms),
-
+                            new StepReference(PersonForAreaWizardSteps.AcceptTerms)
                          })
                 });
             }

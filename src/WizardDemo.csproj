@@ -248,21 +248,20 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Name.cshtml" />
+    <Content Include="Views\Person\_Name.cshtml" />
     <Content Include="Views\Shared\_ViewImports.cshtml" />
-    <Content Include="Views\Shared\_Age.cshtml" />
-    <Content Include="Views\Shared\_WorkTitle.cshtml" />
-    <Content Include="Views\Shared\_Family.cshtml" />
-    <Content Include="Views\Shared\_AcceptTerms.cshtml" />
-    <Content Include="Views\Shared\_StudentAssert.cshtml" />
-    <Content Include="Views\Shared\_StudentData.cshtml" />
+    <Content Include="Views\Person\_Age.cshtml" />
+    <Content Include="Views\Person\_WorkTitle.cshtml" />
+    <Content Include="Views\Person\_Family.cshtml" />
+    <Content Include="Views\Person\_AcceptTerms.cshtml" />
+    <Content Include="Views\Person\_StudentAssert.cshtml" />
+    <Content Include="Views\Person\_StudentData.cshtml" />
     <Content Include="Scripts\app\wizard.handler.js" />
-    <Content Include="Views\Shared\NavBarDefault.cshtml" />
-    <Content Include="Views\Shared\_PersonResult.cshtml" />
+    <Content Include="Views\Person\_PersonResult.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Person\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
