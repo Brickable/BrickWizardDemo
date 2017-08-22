@@ -15,8 +15,7 @@ namespace WizardDemo.Areas.People.Controllers
             get
             {
                 if ((PersonForAreaWizard)Session["SessionPersonForAreaWizard"] == null)
-                    Session["SessionPersonForAreaWizard"] =
-                        new PersonForAreaWizard("PersonForArea", "People", new string[] { PersonForAreaWizardSteps.Family });
+                    Session["SessionPersonForAreaWizard"] = new PersonForAreaWizard("PersonForArea","People", new string[]{PersonForAreaWizardSteps.Family});
                 return (PersonForAreaWizard)Session["SessionPersonForAreaWizard"];
             }
             set

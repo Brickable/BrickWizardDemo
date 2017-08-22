@@ -21,14 +21,11 @@ namespace WizardDemo.Areas.People.Models
     {
         public const string EntryPoint = "PersonForAreaWizardEntryPoint";
         public const string Partial = "PersonForAreaWizardPartialView";
-
     }
 
     public class PersonForAreaWizard : Wizard<PersonViewModel>
     {
         public PersonForAreaWizard(string controllerName, string areaName, string[] frozenSteps = null) : base(controllerName, areaName, frozenSteps) { }
-
-
 
         protected override int MaxTabs => 10;
         protected override Steps Steps
