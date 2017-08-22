@@ -25,9 +25,7 @@ namespace WizardDemo.Areas.People.Models
 
     public class PersonForAreaWizard : Wizard<PersonViewModel>
     {
-        public PersonForAreaWizard(string controllerName, string areaName) : base(controllerName, areaName) { }
-
-        public PersonForAreaWizard(string controllerName, string areaName, string[] frozenSteps) : base(controllerName, areaName, frozenSteps) { }
+        public PersonForAreaWizard(string controllerName, string areaName, string[] frozenSteps = null) : base(controllerName, areaName, frozenSteps) { }
 
         protected override int MaxTabs => 10;
         protected override Steps Steps
@@ -65,7 +63,7 @@ namespace WizardDemo.Areas.People.Models
                             new StepReference(PersonForAreaWizardSteps.Family),
                             new StepReference(PersonForAreaWizardSteps.StudentAssert),
                             new StepReference(PersonForAreaWizardSteps.StudentData),
-                            new StepReference(PersonForAreaWizardSteps.AcceptTerms),
+                            new StepReference(PersonForAreaWizardSteps.AcceptTerms)
                          })
                 });
             }

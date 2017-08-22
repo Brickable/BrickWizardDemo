@@ -54,7 +54,7 @@ namespace WizardDemo.Models
                             new StepReference(Age),
                             new StepReference(WorkTitle),
                             new StepReference(Family),
-                            new StepReference(AcceptTerms),
+                            new StepReference(AcceptTerms)
                          }),
                     new Route(
                          2,
@@ -64,7 +64,7 @@ namespace WizardDemo.Models
                             new StepReference(Age),
                             new StepReference(StudentAssert),
                             new StepReference(StudentData),
-                            new StepReference(AcceptTerms),
+                            new StepReference(AcceptTerms)
                          }),
                      new Route(
                          3,
@@ -73,7 +73,7 @@ namespace WizardDemo.Models
                             new StepReference(Name),
                             new StepReference(Age),
                             new StepReference(StudentAssert),
-                            new StepReference(AcceptTerms),
+                            new StepReference(AcceptTerms)
                          }),
                 });
             }
