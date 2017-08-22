@@ -38,25 +38,25 @@ namespace WizardDemo.Areas.People.Controllers
         [HttpPost]
         public ActionResult PostName(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonName);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.Name, model.PersonName);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostAge(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonBirthday);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.Age, model.PersonBirthday);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostWorkTitle(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonWorkInfo);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.WorkTitle, model.PersonWorkInfo);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostFamily(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonFamily);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.Family, model.PersonFamily);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
@@ -66,7 +66,7 @@ namespace WizardDemo.Areas.People.Controllers
             {
                 return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
             }
-            SessionPersonWizard.Sync(model.PersonAcceptTerms);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.AcceptTerms, model.PersonAcceptTerms);
             SessionPersonWizard.ClearUnusedSteps();
             var m = new PersonResult { ViewModel = SessionPersonWizard.Model };
             return PartialView("_PersonResult", m);
@@ -74,13 +74,13 @@ namespace WizardDemo.Areas.People.Controllers
         [HttpPost]
         public ActionResult PostStudentAssert(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonIsStudent);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.StudentAssert, model.PersonIsStudent);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostStudentData(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonStudentInfo);
+            SessionPersonWizard.TryCommitAndSync(PersonForAreaWizardSteps.StudentData, model.PersonStudentInfo);
             return View(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
     }

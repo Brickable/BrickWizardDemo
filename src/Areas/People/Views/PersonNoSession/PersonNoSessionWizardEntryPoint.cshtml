@@ -1,18 +1,11 @@
 ﻿@model WizardDemo.Models.PersonViewModel
 
-@Html.Partial("~/Views/shared/PersonViewModelHiddenFields.cshtml",Model)
-
 <div id="form-container">
-    @Html.DisplayFor(m => m.NavBar)
+    @Html.DisplayFor(m=>m.NavBar)
 
     <form action="@Url.Action(Model.ActionName,Model.ControllerName, new { area = Model.AreaName })" , data-replace-target-selector="#form-container" class="brick-wizard-form">
         <fieldset>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    @Html.FormControl(model => model.PersonName.PersonFirstName, TypeOfInput.Text)
-                    @Html.FormControl(model => model.PersonName.PersonLastName, TypeOfInput.Text)
-                </div>
-            </div>
+            @Html.EditorFor(m=>m.PersonName)
             @Html.BrickWizardSubmitActions(ButtonsToRender.JustSubmit, SubmitStyle.Next)
         </fieldset>
     </form>

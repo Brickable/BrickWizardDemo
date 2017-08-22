@@ -5,11 +5,9 @@
 function brickWizardHandlerInit() {
    
     $("a[class$='wizard-post-action']").on("click", function (e) {
-        e.preventDefault();
-        var form = $(".brick-wizard-form");
-        form.removeData("validator");
-        form.removeData("unobtrusiveValidation");
-        form.validate().cancelSubmit = true;
+        e.preventDefault();       
+        var form = $(".brick-wizard-form")
+        form.validate().settings.ignore = "*";
         var url = $(this).data("post-action");
         form.attr("action", url).submit();
     });

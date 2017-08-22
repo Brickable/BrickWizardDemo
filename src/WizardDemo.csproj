@@ -152,7 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Areas\People\Controllers\PersonForAreaController.cs" />
+    <Compile Include="Areas\People\Controllers\PersonNoSessionController.cs" />
     <Compile Include="Areas\People\Models\PersonForAreaWizard.cs" />
+    <Compile Include="Areas\People\Models\PersonNoSession.cs" />
     <Compile Include="Areas\People\PeopleAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
@@ -217,6 +219,8 @@
     <Content Include="Areas\People\Views\Shared\EditorTemplates\PersonAcceptTermsViewModel.cshtml" />
     <Content Include="Areas\People\Views\PersonForArea\PersonForAreaWizardEntryPoint.cshtml" />
     <Content Include="Areas\People\Views\PersonForArea\PersonForAreaWizardPartialView.cshtml" />
+    <Content Include="Areas\People\Views\PersonNoSession\PersonNoSessionWizardEntryPoint.cshtml" />
+    <Content Include="Areas\People\Views\PersonNoSession\PersonNoSessionWizardPartialView.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -259,6 +263,7 @@
     <Content Include="Scripts\app\wizard.handler.js" />
     <Content Include="Views\Person\_PersonResult.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\NavBar.cshtml" />
+    <Content Include="Views\Shared\PersonViewModelHiddenFields.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

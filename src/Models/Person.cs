@@ -37,7 +37,7 @@ namespace WizardDemo.Models
     }
     public class PersonViewModel : WizardModelBaseClass
     {
-        public PersonNameViewModel PersonName { get; set; }
+        public PersonNameViewModel PersonName { get; set; } = new PersonNameViewModel();
         public PersonBirthdayViewModel PersonBirthday { get; set; }
         public PersonAddressViewModel PersonAddress { get; set; }
         public PersonIsStudentViewModel PersonIsStudent { get; set; }
