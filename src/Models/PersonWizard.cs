@@ -50,33 +50,30 @@ namespace WizardDemo.Models
                          1,
                          new List<StepReference>
                          {
-                            new StepReference(Name,1),
-                            new StepReference(Age,2),
-                            new StepReference(WorkTitle,3),
-                            new StepReference(Family,4),
-                            new StepReference(AcceptTerms,5),
-
+                            new StepReference(Name),
+                            new StepReference(Age),
+                            new StepReference(WorkTitle),
+                            new StepReference(Family),
+                            new StepReference(AcceptTerms),
                          }),
                     new Route(
                          2,
                          new List<StepReference>
                          {
-                            new StepReference(Name,1),
-                            new StepReference(Age,2),
-                            new StepReference(StudentAssert,3),
-                            new StepReference(StudentData,4),
-                            new StepReference(AcceptTerms,5),
-
+                            new StepReference(Name),
+                            new StepReference(Age),
+                            new StepReference(StudentAssert),
+                            new StepReference(StudentData),
+                            new StepReference(AcceptTerms),
                          }),
                      new Route(
                          3,
                          new List<StepReference>
                          {
-                            new StepReference(Name,1),
-                            new StepReference(Age,2),
-                            new StepReference(StudentAssert,3),
-                            new StepReference(AcceptTerms,4),
-
+                            new StepReference(Name),
+                            new StepReference(Age),
+                            new StepReference(StudentAssert),
+                            new StepReference(AcceptTerms),
                          }),
                 });
             }

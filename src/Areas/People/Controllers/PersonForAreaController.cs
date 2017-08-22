@@ -15,7 +15,7 @@ namespace WizardDemo.Areas.People.Controllers
             get
             {
                 if ((PersonForAreaWizard)Session["SessionPersonForAreaWizard"] == null)
-                    Session["SessionPersonForAreaWizard"] = new PersonForAreaWizard("PersonForArea","People");
+                    Session["SessionPersonForAreaWizard"] = new PersonForAreaWizard("PersonForArea","People", new string[]{PersonForAreaWizardSteps.Family});
                 return (PersonForAreaWizard)Session["SessionPersonForAreaWizard"];
             }
             set
@@ -37,25 +37,25 @@ namespace WizardDemo.Areas.People.Controllers
         [HttpPost]
         public ActionResult PostName(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonName);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonName);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostAge(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonBirthday);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonBirthday);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostWorkTitle(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonWorkInfo);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonWorkInfo);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostFamily(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonFamily);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonFamily);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
@@ -65,7 +65,7 @@ namespace WizardDemo.Areas.People.Controllers
             {
                 return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
             }
-            SessionPersonWizard.Sync(model.PersonAcceptTerms);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonAcceptTerms);
             SessionPersonWizard.ClearUnusedSteps();
             var m = new PersonResult { ViewModel = SessionPersonWizard.Model };
             return PartialView("_PersonResult", m);
@@ -73,13 +73,13 @@ namespace WizardDemo.Areas.People.Controllers
         [HttpPost]
         public ActionResult PostStudentAssert(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonIsStudent);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonIsStudent);
             return PartialView(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
         [HttpPost]
         public ActionResult PostStudentData(PersonViewModel model)
         {
-            SessionPersonWizard.Sync(model.PersonStudentInfo);
+            SessionPersonWizard.ForceCommitAndSync(model.PersonStudentInfo);
             return View(SessionPersonWizard.CurrentStep.ViewName, SessionPersonWizard.Model);
         }
     }
